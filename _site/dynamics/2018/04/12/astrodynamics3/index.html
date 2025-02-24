@@ -1,0 +1,1049 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="google-site-verification" content="BxS7OcHvX7-ftkocsamdTLK77NoDN5rdetrGZi2YK8M" />
+<meta name="360-site-verification" content="f8b7cc1b3e4619db12648deb9acfcbe0" />
+<meta name="shenma-site-verification" content="58e5afc85f7fa985d0c25b2016e567d6_1523332488"/>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="天文,动力学," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="scienceasdf" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="">
+<meta name="keywords" content="天文, 动力学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初窥牛顿平方反比定律和胡克定律的对偶性">
+<meta property="og:url" content="http://localhost:4000/dynamics/2018/04/12/astrodynamics3/">
+<meta property="og:site_name" content="scienceasdf">
+<meta property="og:description" content="">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://localhost:4000/assets//blog_images/Jukowsky.png">
+<meta property="og:image" content="http://localhost:4000/assets//blog_images/square.PNG">
+<meta property="og:updated_time" content="2018-04-12T00:00:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初窥牛顿平方反比定律和胡克定律的对偶性">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://localhost:4000/assets//blog_images/Jukowsky.png">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>初窥牛顿平方反比定律和胡克定律的对偶性</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ea13fa2dc2aa892b0c36fe0fbc9d067d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">scienceasdf</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/dynamics/2018/04/12/astrodynamics3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="scienceasdf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="scienceasdf">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            初窥牛顿平方反比定律和胡克定律的对偶性
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T00:00:00+08:00">
+                2018-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/Dynamics" itemprop="url" rel="index">
+                    <span itemprop="name">Dynamics</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script type="text/x-mathjax-config">
+  		MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']]
+            },
+  			TeX: { 
+                equationNumbers: {  
+                    autoNumber: "AMS"  
+                },
+     		    extensions: ["AMSmath.js"]
+            },
+            CommonHTML: { 
+                linebreaks: { 
+                    automatic: true 
+                } 
+            },
+            "HTML-CSS": { 
+                linebreaks: { 
+                    automatic: true 
+                } 
+            },
+            SVG: { 
+                linebreaks: { 
+                    automatic: true 
+                } 
+            }
+  		});
+		</script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<p><strong>探讨牛顿平方反比定律与胡克定律的对偶性，研究相关的动力学系统以及共形映射。本文的大多数结论来自于Arnold等人的著作。</strong></p>
+
+<hr />
+<p><strong>本文公式较多，在浏览器中将会花较长时间用于渲染公式。</strong></p>
+
+<hr />
+<h2 id="共形映射">共形映射</h2>
+<p>这个是复变函数论的一个重要工具，在这里我们需要以下两个共形映射函数。（吐槽一下，百度的ECharts实在不适合绘制数学函数）</p>
+<h3 id="茹科夫斯基函数">茹科夫斯基函数</h3>
+<p>\begin{equation}
+f(z) = z+\frac{1}{z}
+\end{equation}
+若$z=|R|&gt;1$，则得到的是焦点为$\pm 2$的椭圆，证明如下：
+\begin{equation}
+z=R(\cos\theta+i\sin\theta)
+\end{equation}
+那么有
+<script type="math/tex">% <![CDATA[
+\begin{align}
+f(z)&=z+\frac{1}{z}\\
+&=R(\cos\theta+i\sin\theta)+\frac{1}{R(\cos\theta+i\sin\theta)}\\
+&=R(\cos\theta+i\sin\theta)+\frac{1}{R}(\cos\theta-i\sin\theta)\\
+&=(R+\frac{1}{R})\cos\theta+i(R-\frac{1}{R})\sin\theta
+\end{align} %]]></script>
+很显然可以得到：<br />
+<script type="math/tex">a=R+\frac{1}{R}</script><br />
+<script type="math/tex">b=R-\frac{1}{R}</script><br />
+<script type="math/tex">c=\sqrt{a^2-b^2}=2</script><br />
+<img src="http://localhost:4000/assets//blog_images/Jukowsky.png" width="500px" /></p>
+
+<h3 id="平方函数">平方函数</h3>
+<p>\begin{equation}
+f(z)=z^2
+\end{equation}
+设$z$为一个椭圆，$z=a\cos\theta+ib\sin\theta$
+则有：
+<script type="math/tex">% <![CDATA[
+\begin{align}
+f(z)&=a^2\cos^2\theta-b^2\sin^2\theta+2ab\cos\theta\sin\theta i\\
+&=\frac{a^2(1+\cos 2\theta)}{2}-\frac{b^2(1-\cos{2\theta})}{2}+ab\sin{2\theta}i\\
+&=\frac{a^2-b^2}{2}+\frac{a^2+b^2}{2}\cos{2\theta}+ab\sin{2\theta}i
+\end{align} %]]></script>
+可以得到映射后的图形是其中一个焦点在原点的椭圆<br />
+<script type="math/tex">A=\frac{a^2+b^2}{2}</script><br />
+<script type="math/tex">B=ab</script><br />
+<script type="math/tex">C=\frac{a^2-b^2}{2}</script><br />
+<img src="http://localhost:4000/assets//blog_images/square.PNG" width="500px" /></p>
+
+<h2 id="胡克定律">胡克定律</h2>
+<p>胡克定律
+\begin{equation}
+\mathbf{F}=-k\mathbf{x}
+\end{equation}
+这个东西与椭圆也大有关系。首先，在一维问题中，如果一个小球和弹簧相连，那么会形成简谐振动，而简谐振动的相平面就是椭圆（能量守恒易得）。我们考虑更加复杂的情况：一个弹簧连着一个小球进行二维平面运动，也会得到椭圆的运动轨迹，证明如下<a href="http://www.physics.hmc.edu/~saeta/courses/p111/uploads/Y2011/HSChapter6.pdf">[1]</a>：<br />
+将平面运动分解为径向和周向的速度分量，角动量方程为：
+\begin{equation}
+L=mr^2\dot\theta
+\end{equation}
+能量方程为：
+\begin{equation}
+E=\frac{1}{2}m\dot r^2+\frac{L^2}{2mr^2}+U(r)
+\end{equation}
+根据以上两个方程，可以分别求出$r,\theta$对时间的导数，因此可以得到
+\begin{equation}
+\frac{dr}{d\theta}=\frac{dr/dt}{d\theta/dt}=\pm\sqrt{\frac{2m}{l^2}}r^2\sqrt{E-l^2/2mr^2-U(r)}
+\end{equation}
+\begin{equation}
+\theta=\int d\theta=\pm\frac{l}{\sqrt{2m}}\int^r\frac{dr/r^2}{\sqrt{E-l^2/2mr^2-U(r)}}
+\end{equation}
+势能的表达式
+\begin{equation}
+U=0.5kr^2
+\end{equation}
+因此可以得到
+\begin{equation}
+\theta(r)=\pm\frac{i}{\sqrt{2m}}\int^r\frac{dr/r^2}{\sqrt{E-l^2/2mr^2-0.5kr^2}}
+\end{equation}
+令$z=r^2$，有
+\begin{equation}
+\theta(z)=\pm\frac{l}{2\sqrt{2m}}\int^z\frac{dz/z}{\sqrt{-l^2/2m+Ez-(k/2)z^2}}
+\end{equation}
+因为
+\begin{equation}
+\int^z\frac{dz/z}{\sqrt{a+bz+cz^2}}=\frac{1}{-a}\mathrm{asin}(\frac{bz+2a}{z\sqrt{b^2-4ac}})
+\end{equation}
+所以有
+\begin{equation}
+\theta-\theta_0=\pm\frac{1}{2}\mathrm{asin}(\frac{Er^2-l^2/m}{r^2\sqrt{E^2-kl^2/m}})
+\end{equation}
+反解$r$得到
+\begin{equation}
+r^2(\theta)=\frac{l^2/m}{E\mp(\sqrt{E^2-kl^2/m})\sin{2(\theta-\theta_0)}}
+\end{equation}
+显然，这个轨道是闭合的（因为$r^2(\theta+2\pi)=r^2(\theta)$），也可以证明表示的是一个椭圆（把分母有理化）。不过如果我们知道比如长轴的位置速度信息，求短轴就不必这么麻烦，一个角动量守恒方程一个能量守恒方程就可以得到短轴的位置速度。</p>
+
+<h2 id="牛顿平方反比定律与胡克定律的对偶性">牛顿平方反比定律与胡克定律的对偶性</h2>
+<p>参考文献为<a href="https://www.researchgate.net/publication/228571130_Planetary_Motion_and_the_Duality_of_Force_Laws">[2]</a>(W. Hall, Rachel &amp; Josic, Kresimir. (2000). Planetary Motion and the Duality of Force Laws. Society for Industrial and Applied Mathematics. 42. 115-124. 10.1137/S0036144598346005. )</p>
+
+<p>考虑胡克定律的动力学形式为复数形式：
+\begin{equation}
+\ddot w = -Cw
+\end{equation}
+这里的时间自变量为$t$，假设另一个时间变量$\tau$满足$\tau=\tau(t)$，另外一个运动$z=z(\tau)$，我们会得到$\frac{d^2z}{d\tau^2}=-\tilde{C}\frac{z}{|z|^3}$.<br />
+事实上，只要做变换$z=w^2$，并令$\frac{d\tau}{dt}=|w|^2$，就可以得到平方反比的形式，证明如下：
+<script type="math/tex">% <![CDATA[
+\begin{align}
+\frac{d^2z}{d\tau^2}&=\frac{1}{|w|^2}\frac{d}{dt}(\frac{1}{|w|^2}\frac{dw^2}{dt})\\
+&=\frac{2}{w\bar w}\frac{d}{dt}(\frac{1}{\bar w}\frac{dw}{dt})\\
+&=\frac{2}{w\bar w^3}\frac{dw}{dt}\frac{d\bar w}{dt}+\frac{2}{w\bar w^2}\frac{d^2w}{dt^2}\\
+&=-\frac{2}{w\bar w}[\bar w^{-2}\frac{dw}{dt}\bar{\frac{dw}{dt}}+C\frac{w}{\bar w}]\\
+&=-2w^{-1}(\bar w)^{-3}[|\dot w|^2+C|w|^2]
+\end{align} %]]></script>
+现在令$E_w=\frac{1}{2}(|\dot w|^2+C|w|^2)$，可以得到
+\begin{equation}
+\frac{d^2 z}{d\tau^2}=-4E_ww^{-1}\bar w^{-3}=-4E_w\frac{z}{|z|^3}
+\end{equation}
+这就是我们想要得到的形式。不得不说，Arnold等人的想法太意识流了，这也能想到。<br />
+其实核心就在于上面的那个平方关系的共形映射，让中心在原点的椭圆映射到焦点在原点的椭圆。而那个$\tau,t$的关系是如何得到的呢？事实上，由于角动量守恒，胡克椭圆和开普勒椭圆都会满足面积率。我们记$A_1,A_2$分别是$w(t),z(\tau)$所扫过的面积。$w(t)=(r,\theta)$，而$z=w^2(t)=(r^2,2\theta)$.可以得到
+<script type="math/tex">% <![CDATA[
+\begin{align}
+\mathrm{const}&=\frac{\frac{dA_1}{dt}}{\frac{dA_2}{dt}}\\
+&=\frac{r\theta\frac{dr}{dt}+0.5r^2\frac{d\theta}{dt}}{2r^3\theta\frac{dr}{dt}+r^4\frac{d\theta}{dt}}\\
+&=\frac{1}{2}\frac{d\tau}{dt}\frac{1}{r^2}\\
+&=\frac{1}{2}\frac{d\tau}{dt}\frac{1}{|w|^2}
+\end{align} %]]></script>
+这样想到的取$\frac{d\tau}{dt}=|w|^2$……<br />
+上面这个东西还可以进一步推论：点在幂为$a$的力场中的轨道，在经过适当的变换$w=z^\beta$后变成幂为A的力场中的轨道，则有$A,a,\beta$满足：<br />
+<script type="math/tex">(a+3)(A+4)=4,\quad \beta=\frac{a+3}{2}</script><br />
+证明过程与刚才类似，不过需要注意的是要选择的$\tau$要满足关系
+\begin{equation}
+\frac{d\tau}{dt}=\frac{|z(\tau(t))|^2}{|w(t)|^2}=|w(t)|^{2(\beta-1)}
+\end{equation}</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/%E5%A4%A9%E6%96%87" rel="tag"># 天文</a>
+          
+            
+            <a href="/tag/#/%E5%8A%A8%E5%8A%9B%E5%AD%A6" rel="tag"># 动力学</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/dynamics/2018/04/12/dynamics/" rel="next" title="初窥含太阳系动力系统在内的几类动力系统">
+                <i class="fa fa-chevron-left"></i> 初窥含太阳系动力系统在内的几类动力系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2018/04/06/groundTrackPlot/" rel="prev" title="在线绘制星下点轨迹">
+                在线绘制星下点轨迹 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.png"
+               alt="scienceasdf" />
+          <p class="site-author-name" itemprop="name">scienceasdf</p>
+           
+              <p class="site-description motion-element" itemprop="description">We will bury them !</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/scienceasdf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/scienceasdf/activities" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-joomla"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="404.html" target="_blank" title="404公益@宝贝回家">
+                  
+                    <i class="fa fa-fw fa-child"></i>
+                  
+                  404公益@宝贝回家
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="site/" target="_blank" title="神奇的网页">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  神奇的网页
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#共形映射"> <span class="nav-number">1</span> <span class="nav-text">共形映射</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#茹科夫斯基函数"> <span class="nav-number">1.1</span> <span class="nav-text">茹科夫斯基函数</span> </a> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> </li></ol> </li></ol> </li></ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#平方函数"> <span class="nav-number">1.2</span> <span class="nav-text">平方函数</span> </a> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> </li></ol> </li></ol> </li></ol> </li></ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#胡克定律"> <span class="nav-number">2</span> <span class="nav-text">胡克定律</span> </a> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> </li></ol> </li></ol> </li></ol> </li></ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#牛顿平方反比定律与胡克定律的对偶性"> <span class="nav-number">3</span> <span class="nav-text">牛顿平方反比定律与胡克定律的对偶性</span> </a> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child">
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">scienceasdf</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
+

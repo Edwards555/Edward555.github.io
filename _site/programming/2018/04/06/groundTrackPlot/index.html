@@ -1,0 +1,981 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="google-site-verification" content="BxS7OcHvX7-ftkocsamdTLK77NoDN5rdetrGZi2YK8M" />
+<meta name="360-site-verification" content="f8b7cc1b3e4619db12648deb9acfcbe0" />
+<meta name="shenma-site-verification" content="58e5afc85f7fa985d0c25b2016e567d6_1523332488"/>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,天文," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="scienceasdf" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="自己写了写网页绘制星下点轨迹的代码。">
+<meta name="keywords" content="JavaScript, 天文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在线绘制星下点轨迹">
+<meta property="og:url" content="http://localhost:4000/programming/2018/04/06/groundTrackPlot/">
+<meta property="og:site_name" content="scienceasdf">
+<meta property="og:description" content="自己写了写网页绘制星下点轨迹的代码。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-14T00:00:00+08:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在线绘制星下点轨迹">
+<meta name="twitter:description" content="自己写了写网页绘制星下点轨迹的代码。">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>在线绘制星下点轨迹</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ea13fa2dc2aa892b0c36fe0fbc9d067d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">scienceasdf</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/programming/2018/04/06/groundTrackPlot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="scienceasdf">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="scienceasdf">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            在线绘制星下点轨迹
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-06T00:00:00+08:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/category/#/Programming" itemprop="url" rel="index">
+                    <span itemprop="name">Programming</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script type="text/x-mathjax-config">
+  		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+  							TeX: { equationNumbers: {  autoNumber: "AMS"  },
+     							   extensions: ["AMSmath.js"]}
+  		});
+		</script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<p><strong>自己写了写网页绘制星下点轨迹的代码。</strong></p>
+
+<hr />
+<h2 id="算法">算法</h2>
+<p>这个算是原创算法了吧，身边没有轨道动力学和弹道导弹学的教材，都是自己瞎琢磨的算法。之前我们分析了<a href="https://scienceasdf.github.io/programming/2017/04/07/astrodynamics1/">轨道动力学中常用的计算机算法</a>,<a href="https://scienceasdf.github.io/programming/2017/04/14/astrodynamics2/">轨道动力学中常用的计算机算法（二）</a>，这些很有用，可以让我们把轨道六根数转化为笛卡尔坐标系的坐标，以及进行轨道外推。</p>
+
+<p>星下点轨迹的具体计算过程如下：每隔时间$dt$后，外推此时的轨道六根数，并得到相应的笛卡尔坐标系坐标。然后经度
+\begin{equation}
+\lambda = \mathrm{atan2}(y,x)
+\end{equation}
+纬度
+\begin{equation}
+\phi = \mathrm{asin}(\frac{z}{r})
+\end{equation}
+其中
+\begin{equation}
+r=\sqrt{x^2+y^2+z^2}
+\end{equation}
+这里就基本完成了。不过还要考虑地球自转的影响，这个很让人头疼，因为atan2函数本身值域没问题,$[-\pi,\pi]$,但是考虑地球自转后需要
+\begin{equation}
+\lambda = \lambda - t * \omega
+\end{equation}
+这样$\lambda$的值域就会变化。想了挺长时间，得到这样的一种解决方法</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">geo</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">adjust</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(){</span>
+    <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="kr">long</span> <span class="o">&gt;</span> <span class="mi">180</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="kr">long</span> <span class="o">&lt;</span> <span class="mi">180</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">theta</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="kr">long</span> <span class="o">*</span> <span class="nx">radPerDeg</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">theta</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">theta</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">atan2</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="nx">c</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="kr">long</span> <span class="o">=</span> <span class="nx">res</span> <span class="o">*</span> <span class="nx">degPerRad</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="具体实现">具体实现</h2>
+<p>我是javascript的门外汉，把我以前写的C++代码全部移植到javascript很是费劲。不过运算速度比我想象中快多了。这里直接用的是开普勒运动的轨道外推，如果考虑摄动项那就需要用龙格库塔算法了。整个javascript的代码在<a href="https://scienceasdf.github.io/site/js/orbitState.js">orbitState.js</a>，代码是可读的。</p>
+
+<p>UI还是以前的东西，用jQuery Mobile+ECharts做的。最后，绘图的连接在<a href="https://scienceasdf.github.io/site/groundTrackPlot.html">这里</a>。</p>
+
+<hr />
+<h2 id="更新2018-4-8">更新（2018-4-8）</h2>
+<p>另外自己还做了一个<a href="https://scienceasdf.github.io/site/TLE/index.html">在线解析TLE数据绘制星下点轨迹的网页</a>，这个的算法就不是我写的了，而是用的开源的<a href="https://github.com/shashwatak/satellite-js">satellite.js</a>的SGP4算法，他的代码也写得非常好。网页里面还有试一试功能，就是在NORAD的网站里面按编号随机抓取一个TLE数据，不过再度遇到了跨域访问的问题，这一次的解决方法则是protocol:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span> 
+  <span class="na">type</span><span class="p">:</span> <span class="s1">'GET'</span><span class="p">,</span> 
+  <span class="na">url</span><span class="p">:</span> <span class="s1">'https://crossorigin.me/https://celestrak.com/cgi-bin/TLE.pl?CATNR='</span> <span class="o">+</span> <span class="nx">rndSat</span> <span class="o">+</span> <span class="s1">'&amp;callback=?'</span> <span class="p">,</span> 
+  <span class="na">cache</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span> 
+  <span class="na">dataType</span><span class="p">:</span> <span class="s2">"text"</span><span class="p">,</span> 
+  <span class="na">crossDomain</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
+  <span class="na">headers</span> <span class="p">:</span> <span class="p">{</span><span class="s1">'Origin'</span><span class="p">:</span><span class="s1">'http://foo.example'</span><span class="p">},</span> 
+  <span class="na">success</span> <span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span> 
+    <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span> <span class="s1">'html'</span> <span class="p">);</span>
+    <span class="nx">el</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">p</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span> <span class="s1">'BODY'</span> <span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'PRE'</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">textContent</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">eachLine</span> <span class="o">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="sr">/</span><span class="se">[\n]</span><span class="sr">/</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">eachLine</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'No TLE found'</span><span class="p">){</span>
+      <span class="nx">$</span><span class="p">(</span> <span class="s2">"#myPopup3"</span> <span class="p">).</span><span class="nx">popup</span><span class="p">(</span> <span class="s2">"open"</span> <span class="p">);</span>   
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">titleStr</span> <span class="o">=</span> <span class="nx">eachLine</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[\s]</span><span class="sr">deb/ig</span><span class="p">,</span> <span class="s2">"的碎片"</span><span class="p">);</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">"随机得到的卫星名字是"</span> <span class="o">+</span> <span class="nx">titleStr</span><span class="p">);</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s1">'#areaTLE'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="nx">eachLine</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'</span><span class="err">\</span><span class="s1">n'</span> <span class="o">+</span> <span class="nx">eachLine</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+      <span class="nx">boolNotGet</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>没错，通过一个crossorigin.me的网站来抓数据，这样就可以实现跨域访问了。但是需要注意的是一定要加上Origin的访问头，否则得不到数据。</p>
+<h3 id="2018-4-14更新">2018-4-14更新</h3>
+<p>https://crossorigin.me访问不了了，只能登陆http://crossorigin，又是费了很大劲找解决方案。最终找到了一个替代的网站：https://cors-anywhere.herokuapp.com，和crossorigin的使用没什么区别。还有一些不支持https的站点，以及一些用不了的站点，我就不列举在这里了。</p>
+
+<h2 id="航天类开源代码一览">航天类开源代码一览</h2>
+<ul>
+  <li><a href="https://sourceforge.net/projects/gmat/">GMAT</a>：这个是对我帮助最大的一个软件，C++的代码，软件设计非常好，无论是数学类算法还是从软件工程上说大量设计模式的运用，能够在一定程度上取代STK，不过遗憾的是GUI是用wxWidgets写的，如果是Qt就好了；</li>
+  <li><a href="https://github.com/shashwatak/satellite-js">satellite.js</a>：就是我网页里用到的开源代码，写得也很好，可以实现在网页中的计算（如果结合three.js这些3D渲染框架，在网页上还能进行动画演示）；</li>
+  <li><a href="http://www.celestrak.com/publications/AIAA/2006-6753/">Vallado的代码</a>：这个Vallodo是天体动力学的祖师级大神，他的代码我虽然没有看过，但是他的代码和学术出版都是对我有很大帮助的，satellite.js的代码就是参考了Vallado的代码的；</li>
+</ul>
+
+<p>下面的这些我不太了解了，仅供参考：</p>
+<ul>
+  <li><a href="http://previsat.sourceforge.net/">PreviSat</a>：还在更新，C++写的，Qt做GUI；</li>
+  <li><a href="http://www.gano.name/shawn/JSatTrak/">JSatTrak</a>：Java写的，更新很慢；</li>
+  <li><a href="http://jat.sourceforge.net/">JAT</a>：Java写的，没更新了；</li>
+  <li><a href="http://odtbx.sourceforge.net/">ODTBX</a>：Java写的，更新很慢；</li>
+  <li><a href="https://www.orekit.org/">Orekit</a>：Java写的，更新很慢；</li>
+  <li><a href="rhodesmill.org/pyephem/">PyEphem</a>：Python库，很久没更新了；</li>
+  <li><a href="https://pypi.python.org/pypi/sgp4/">SGP4</a>：Python库，很久没更新了</li>
+</ul>
+
+<p>这些开源的不知道为什么有不少托管在SourceForge上面，按理说GitHub生态更好啊。不更新也可以理解，毕竟航天这个东西生态圈太小了。<br />
+另外再给两个在网页上渲染轨道运行的网页的例子，托管在GitHub上的：<a href="https://github.com/koansys/isat">SOT</a>    <a href="https://github.com/daoneil/spacemission">spacemission</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/JavaScript" rel="tag"># JavaScript</a>
+          
+            
+            <a href="/tag/#/%E5%A4%A9%E6%96%87" rel="tag"># 天文</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/dynamics/2018/04/12/astrodynamics3/" rel="next" title="初窥牛顿平方反比定律和胡克定律的对偶性">
+                <i class="fa fa-chevron-left"></i> 初窥牛顿平方反比定律和胡克定律的对偶性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2018/04/04/easyAuto(2)/" rel="prev" title="在手机上绘制根轨迹（2）">
+                在手机上绘制根轨迹（2） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.png"
+               alt="scienceasdf" />
+          <p class="site-author-name" itemprop="name">scienceasdf</p>
+           
+              <p class="site-description motion-element" itemprop="description">We will bury them !</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://github.com/scienceasdf" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/scienceasdf/activities" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-joomla"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="404.html" target="_blank" title="404公益@宝贝回家">
+                  
+                    <i class="fa fa-fw fa-child"></i>
+                  
+                  404公益@宝贝回家
+                </a>
+              </span>
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="site/" target="_blank" title="神奇的网页">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  神奇的网页
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#算法"> <span class="nav-number">1</span> <span class="nav-text">算法</span> </a> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> </li></ol> </li></ol> </li></ol> </li></ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#具体实现"> <span class="nav-number">2</span> <span class="nav-text">具体实现</span> </a> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> </li></ol> </li></ol> </li></ol> </li></ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#更新2018-4-8"> <span class="nav-number">3</span> <span class="nav-text">更新（2018-4-8）</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#2018-4-14更新"> <span class="nav-number">3.1</span> <span class="nav-text">2018-4-14更新</span> </a> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> </li></ol> </li></ol> </li></ol> </li></ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#航天类开源代码一览"> <span class="nav-number">4</span> <span class="nav-text">航天类开源代码一览</span> </a> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child"> <ol class="nav-child">
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">scienceasdf</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
+
