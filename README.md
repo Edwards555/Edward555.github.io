@@ -1,9 +1,3 @@
-## Welcome to Jackpon Gitblog
-该博客是利用 GitHub Pages+Jekyll 搭建而成，并参照了Jekyll的开源模板NexT(http://theme-next.simpleyyt.com/getting-started.html#install-next-theme)，
-在此非常感谢GitHub Pages这么好用的项目，也感谢为此模板做出贡献的大佬，
-详情欢迎访问我的Gitblog：https://jackpon.github.io
-
----
 ## 如果你对此感兴趣
 那么你只需几个步骤就可以搭建基于GitHub Pages的个人博客网站；
 
@@ -22,9 +16,5 @@ _posts：这里面装的就是你的博文啦，记住，要用markdown语法写
 #### 补充：对于git的基本操作如果不熟悉可以看看我在知乎的一篇文章——Git入门操作（https://www.zhihu.com/people/Jackpon/posts ）我的Gitblog上也有；
 ### 也可以在知乎私信给我，尽我所能帮助 *_*!
 
----
-## 新添加了页面LeetCode：
-    该页面文档是采用mkdocs编译生成的，使用很简单，你只需几个命令就可以
-    生成自己的静态文件，具有搜索功能，具体操作见官网。
 
 ###    MkDocs 中文文档（ http://markdown-docs-zh.readthedocs.io/zh_CN/latest/ ）
