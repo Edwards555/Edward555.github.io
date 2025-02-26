@@ -6,8 +6,8 @@
 # Site
 title: Edwards
 subtitle:
-description: "could"
-author: misaka
+description: "This is for you too"
+author: MISAKA
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: zh-Hans
 date_format: '%Y-%m-%d'
@@ -87,7 +87,7 @@ keywords: "Jekyll, NexT"
 rss:
 
 # Specify the date when the site was setup
-since: 2017
+since: 2024
 
 # icon between year and author @Footer
 authoricon: heart
@@ -219,10 +219,10 @@ font:
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 social:
   #LinkLabel: Link
-  GitHub: https://github.com/scienceasdf
-  ZhiHu: https://www.zhihu.com/people/scienceasdf/activities
-  404公益@宝贝回家: 404.html
-  神奇的网页: site/
+  GitHub: https://github.com/Edwards555/
+  # ZhiHu: https://www.zhihu.com/people/scienceasdf/activities
+  # 404公益@宝贝回家: 404.html
+  # 神奇的网页: site/
   
 # Social Links Icons
 # Icon Mapping:
@@ -234,9 +234,9 @@ social_icons:
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
-  ZhiHu: joomla
-  404公益@宝贝回家: child
-  LeetCode: drupal
+  # ZhiHu: joomla
+  # 404公益@宝贝回家: child
+  # LeetCode: drupal
   #Weibo: weibo
 
 
